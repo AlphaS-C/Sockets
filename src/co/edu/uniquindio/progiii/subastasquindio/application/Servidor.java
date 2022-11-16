@@ -1,4 +1,4 @@
-package co.uniquindio.progiii.subastasquindio.application;
+package co.edu.uniquindio.progiii.subastasquindio.application;
 
 
 import java.io.IOException;
