@@ -16,7 +16,6 @@ public class Servidor {
 
 	private ObjectInputStream flujoEntradaComunicacion;
 	private ObjectOutputStream flujoSalidaComunicacion;
-	private CasaSubastas subastasQuindio;
 
 
 	public Servidor(int puerto) {
@@ -35,13 +34,7 @@ public class Servidor {
 
 			System.out.println("Conexion establecida");
 
-//			flujoEntradaComunicacion = new ObjectInputStream(socketComunicacion.getInputStream());
-			
-			// Flujo de entrada en null debido a que al crearse un flujo de entrada,
-			// este debe escribirse con algun dato, sino, el servidor se quedá esperando a que
-			// se escriba uno. En este caso, no vamos a recibir objetos, por lo que no hace falta
-			// tener un flujo de entrada. Quitar en caso de necesitar recibir datos.
-			flujoEntradaComunicacion = null;
+			flujoEntradaComunicacion = new ObjectInputStream(socketComunicacion.getInputStream());
 			flujoSalidaComunicacion = new ObjectOutputStream(socketComunicacion.getOutputStream());
 			iniciarHiloClienteServidor();
 		}
@@ -53,16 +46,6 @@ public class Servidor {
 		HiloClienteServidor hiloClienteServidor = new HiloClienteServidor();
 		hiloClienteServidor.inicializar(flujoEntradaComunicacion,flujoSalidaComunicacion,this);
 		hiloClienteServidor.start();
-	}
-
-
-	public CasaSubastas getCasa() {
-		return subastasQuindio;
-	}
-
-
-	public void setCasa(CasaSubastas subastasQuindio) {
-		this.subastasQuindio = subastasQuindio;
 	}
 
 	

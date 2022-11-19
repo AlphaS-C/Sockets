@@ -9,12 +9,8 @@ public class AplicacionServer {
 
 	public static void main(String[] args) {
 
-		System.out.println("Cargando XML...");
-		CasaSubastas subastasQuindio = Persistencia.cargarRecursoCasaSubastasXML();
-		
 		// inicializo los valores iniciales de la base de datos
 		Servidor servidor = new Servidor(9999);
-		servidor.setCasa(subastasQuindio); 
 		try {
 			servidor.runServer();
 		} catch (IOException e) {
